@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 var keys = require('./config/keys');
 
 // Configuration.
-var serverConfig = require('./config/server');
 var expressConfig = require('./config/express');
 
 // Passport configuration.
@@ -16,10 +15,9 @@ var app = express();
 expressConfig(app);
 
 // Connect to the database.
-mongoose.connect(keys.mongoURI, { 
-    useNewUrlParser: true, 
-    useCreateIndex: true
-    }
-);
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+});
 
 exports.auth = app;

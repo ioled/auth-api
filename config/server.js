@@ -4,6 +4,6 @@
  */
 
 module.exports = {
-	/**@param {number} PORT Server listening port. */
-	PORT: process.env.PORT || 8000,
+  /**@param {number} PORT Server listening port. */
+  PORT: process.env.PORT || 3000,
 };

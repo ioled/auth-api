@@ -6,20 +6,25 @@ var _ = require('lodash');
  * @param {object} res Respose.
  */
 
- exports.currentUser = (req, res) => {
-	// If user is not authenticated, return null.
-	if (!req.user) res.json({error: 'User not logged in'});
+exports.currentUser = (req, res) => {
+  // If user is not authenticated, return null.
+  console.log('[iOLED-auth-API][currentUser][Request]', req.params, req.body);
 
-	else {	
-		var user = _.pick(req.user, ['name', 'email', 'photo']);
-    	res.send(user);
-	} 
-	
+  if (!req.user) res.json({error: 'User not logged in'});
+  else {
+    const user = _.pick(req.user, ['name', 'email', 'photo']);
+
+    console.log('[iOLED-API][currentUser][Response]', user);
+    res.status(200).send(user);
+  }
 };
 
 // Logout
 exports.logoutUser = (req, res) => {
-	req.logout();
-	res.redirect('/auth');
-};
+  console.log('[iOLED-auth-API][logoutUser][Request]', req.params, req.body);
 
+  req.logout();
+
+  console.log('[iOLED-auth-API][logoutUser][Response]', []);
+  res.redirect('/auth');
+};
